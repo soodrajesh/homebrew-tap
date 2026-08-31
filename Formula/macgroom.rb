@@ -7,7 +7,11 @@ class Macgroom < Formula
   head "https://github.com/soodrajesh/macgroom-cli.git", branch: "main"
 
   depends_on :macos
-  depends_on xcode: ["15.0", :build]
+  # Deliberately no `depends_on xcode:` — the Swift toolchain that ships
+  # with Xcode Command Line Tools alone is sufficient for `swift build`;
+  # verified live that requiring full Xcode.app here was wrong and just
+  # blocked installs unnecessarily.
+  uses_from_macos "swift"
 
   def install
     system "swift", "build", "--disable-sandbox", "-c", "release"
