@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-install:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: brew style
+        run: brew style Formula/macgroom.rb Casks/macgroom.rb
+
+      # `brew audit <path>` is disabled in current Homebrew, and auditing by
+      # tap-qualified name requires the tap to already be "trusted" — a
+      # security gate that defeats testing a PR's changes before merge. A
+      # real `brew install` (formula from source, cask by download+checksum)
+      # against this checkout catches the same class of errors (bad url,
+      # wrong sha256, broken Ruby) without fighting that gate.
+      - name: Tap this checkout
+        run: brew tap soodrajesh/tap "$GITHUB_WORKSPACE"
+
+      - name: Install formula from source
+        run: brew install --build-from-source soodrajesh/tap/macgroom
+
+      - name: Install cask
+        run: brew install --cask soodrajesh/tap/macgroom
