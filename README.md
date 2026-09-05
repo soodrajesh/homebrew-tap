@@ -1,6 +1,6 @@
-# homebrew-macgroom
+# homebrew-tap
 
-Homebrew tap for the MacGroom family:
+Homebrew tap for the MacGroom family (and any future soodrajesh apps/CLIs):
 
 - [macgroom-cli](https://github.com/soodrajesh/macgroom-cli), the free open-source CLI for clearing dev-tool caches and project build artifacts (Formula).
 - [MacGroom](https://gogenops.com/mac-apps/macgroom/), the native Mac app for finding AI model caches, dev-tool clutter, and other disk-space hogs (Cask).
@@ -9,10 +9,10 @@ Homebrew tap for the MacGroom family:
 
 ```bash
 # CLI
-brew install soodrajesh/macgroom/macgroom
+brew install soodrajesh/tap/macgroom
 
 # Mac app
-brew install --cask soodrajesh/macgroom/macgroom
+brew install --cask soodrajesh/tap/macgroom
 ```
 
 ## Updating the CLI formula
