@@ -1,6 +1,6 @@
 cask "macgroom" do
-  version "1.2.4"
-  sha256 "c3c9ef722372d94bc4715d8cc5ed6522e583b57587047d8f340b725ed32fc0a6"
+  version "1.2.6"
+  sha256 "243354a9d58a2f48f077c3153d2076206486f3a22034d1df9180e8b5af298271"
 
   url "https://github.com/soodrajesh/macgroom-support/releases/download/v#{version}/MacGroom.dmg"
   name "MacGroom"
